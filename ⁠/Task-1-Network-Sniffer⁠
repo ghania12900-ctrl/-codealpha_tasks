@@ -1,0 +1,37 @@
+"""
+CodeAlpha Cybersecurity Internship
+Task 1: Basic Network Sniffer
+Domain: Cyber Security
+Description: A Python program using Scapy to capture and analyze network packets,
+extracting source IP, destination IP, and protocol details.
+"""
+
+from scapy.all import sniff, IP, TCP, UDP, ICMP
+
+def process_packet(packet):
+    if IP in packet:
+        src_ip = packet[IP].src
+        dst_ip = packet[IP].dst
+        protocol = "Other"
+
+        if packet.haslayer(TCP):
+            protocol = "TCP"
+        elif packet.haslayer(UDP):
+            protocol = "UDP"
+        elif packet.haslayer(ICMP):
+            protocol = "ICMP"
+
+        print(f"[+] Packet Captured: {src_ip} -> {dst_ip} | Protocol: {protocol}")
+
+def main():
+    print("=" * 50)
+    print("      CODEALPHA BASIC NETWORK SNIFFER")
+    print("=" * 50)
+    print("[*] Starting packet capture (Ctrl+C to stop)...\n")
+    
+    # Capture up to 20 packets
+    sniff(prn=process_packet, count=20)
+    print("\n[*] Packet capture complete.")
+
+if __name__ == "__main__":
+    main()
