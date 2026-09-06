@@ -1,0 +1,36 @@
+# Secure Coding Audit Report
+
+**Project:** User Authentication Module  
+**Domain:** Cyber Security  
+**Organization:** CodeAlpha  
+**Review Type:** Manual Static Analysis  
+
+---
+
+## 1. Executive Summary
+A secure code review was conducted on a target Python authentication module. The audit identified critical security vulnerabilities including SQL Injection and improper credential management. Remediation recommendations were implemented to bring the code into compliance with OWASP secure coding standards.
+
+---
+
+## 2. Identified Vulnerabilities
+
+### Vulnerability 1: SQL Injection (SQLi)
+* **Severity:** High (Critical)
+* **CWE ID:** CWE-89
+* **Description:** User input was directly formatted into the SQL query string without sanitization or parameterization.
+* **Impact:** Attackers can bypass authentication controls or execute arbitrary SQL commands to extract database contents.
+* **Remediation:** Converted inline string queries to parameterized queries (`?` placeholders) to isolate input execution[span_2](start_span)[span_2](end_span).
+
+### Vulnerability 2: Plaintext Credential Verification
+* **Severity:** Medium
+* **CWE ID:** CWE-256
+* **Description:** Passwords were being evaluated in cleartext directly against stored database values.
+* **Impact:** Increases vulnerability to data leaks if database storage or communication streams are intercepted.
+* **Remediation:** Integrated cryptographic hashing functions (`SHA-256`) to ensure passwords are strictly hashed prior to verification.
+
+---
+
+## 3. Recommendations & Best Practices
+1. **Always Use Prepared Statements:** Never concatenate user input directly into database query strings[span_3](start_span)[span_3](end_span).
+2. **Implement Strong Password Hashing:** Utilize modern hashing algorithms such as `bcrypt` or `Argon2` with unique salts.
+3. **Automate Static Analysis:** Integrate automated SAST scanners (e.g., Bandit for Python) into continuous deployment pipelines.
