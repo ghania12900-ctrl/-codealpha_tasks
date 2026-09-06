@@ -1,0 +1,53 @@
+# Phishing Awareness & Prevention Training
+**Author:** Internship Submission  
+**Domain:** Cyber Security  
+**Organization:** CodeAlpha  
+
+---
+
+## 1. What is Phishing?
+Phishing is a social engineering attack where malicious actors impersonate legitimate organizations via email, SMS, or websites to trick individuals into revealing sensitive information such as passwords, credit card numbers, or personally identifiable information (PII).
+
+---
+
+## 2. Common Types of Phishing
+* **Email Phishing:** Generic mass emails sent with malicious links or attachments.
+* **Spear Phishing:** Targeted attacks tailored to specific individuals or organizations using personalized context.
+* **Smishing (SMS Phishing):** Fraudulent text messages containing deceptive link prompts.
+* **Vishing (Voice Phishing):** Scam phone calls attempting to trick victims into providing private accounts or credentials.
+
+---
+
+## 3. Red Flags to Spot Fake Emails
+* **Mismatched Sender Address:** The display name says "Bank Support" but the address is `support@check-verify-bank.com`.
+* **Urgent or Threatening Language:** Phrases like "Account Suspended in 24 Hours!" designed to induce panic.
+* **Generic Greetings:** Using "Dear Customer" instead of your actual name.
+* **Suspicious Links:** Hovering over links reveals an unexpected domain name.
+* **Unsolicited Attachments:** Unexpected `.zip`, `.exe`, or macro-enabled `.doc` files.
+
+---
+
+## 4. Best Practices & Prevention Strategies
+1. **Verify Sender Details:** Always inspect the actual email header and domain address.
+2. **Enable Multi-Factor Authentication (MFA):** Adds a secondary layer of account security even if passwords are leaked.
+3. **Never Click Unverified Links:** Navigate to official websites directly via browser bookmarks.
+4. **Report Phishing:** Forward suspicious communications immediately to your organization's IT security team.
+
+---
+
+## 5. Interactive Phishing Knowledge Quiz
+
+### Question 1: What is the primary goal of a phishing attack?
+- [ ] A) To speed up internet bandwidth
+- [x] B) To trick users into revealing sensitive information
+- [ ] C) To update system graphics drivers
+
+### Question 2: Which sender address is most likely fraudulent for an official bank notice?
+- [ ] A) support@yourbank.com
+- [x] B) security@yourbank-update-verify.net
+- [ ] C) help@yourbank.com
+
+### Question 3: What step should you take if you receive an unexpected email asking to verify account credentials?
+- [ ] A) Reply immediately with your password
+- [ ] B) Click the link inside the email
+- [x] C) Do not click links and verify via the official website/app directly
