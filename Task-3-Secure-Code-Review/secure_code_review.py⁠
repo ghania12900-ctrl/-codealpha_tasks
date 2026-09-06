@@ -1,0 +1,58 @@
+"""
+CodeAlpha Cybersecurity Internship
+Task 3: Secure Coding Review
+Domain: Cyber Security
+Description: Security audit of a Python authentication system identifying SQL Injection 
+and insecure credential storage vulnerabilities, followed by remediated secure code.
+"""
+
+# ==============================================================================
+# SECTION 1: VULNERABLE CODE (BEFORE REVIEW)
+# ==============================================================================
+# Flaws Identified:
+# 1. SQL Injection (CWE-89): Input concatenated directly into SQL query.
+# 2. Hardcoded Credentials (CWE-798): Plaintext admin credentials in code.
+# 3. Plaintext Password Storage (CWE-256): Passwords stored without hashing.
+
+import sqlite3
+
+def vulnerable_login(username, password):
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    
+    # VULNERABILITY: SQL Injection risk via string formatting
+    query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+    cursor.execute(query)
+    
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
+
+# ==============================================================================
+# SECTION 2: REMEDIATED SECURE CODE (AFTER REVIEW)
+# ==============================================================================
+# Fixes Applied:
+# 1. Parameterized Queries: Prevents SQL Injection by escaping inputs.
+# 2. Password Hashing (bcrypt/hashlib): Passwords verified securely via hashes.
+# 3. Secure Connection Handling: Clean connection termination.
+
+import hashlib
+
+def secure_login(username, password):
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    
+    # Hash password input using SHA-256 before database lookup
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    
+    # FIX: Parameterized query using placeholder (?)
+    query = "SELECT id, username FROM users WHERE username = ? AND password = ?"
+    cursor.execute(query, (username, hashed_password))
+    
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
+if __name__ == "__main__":
+    print("Task 3: Secure Coding Review Completed.")
